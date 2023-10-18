@@ -40,6 +40,62 @@ namespace BurgerRestaurant
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
         }
 
+
+        private void btnAddOrder_Click(object sender, EventArgs e)
+        {
+            Order siparis = new Order();
+
+            siparis.Menu = (Menu)cboxMenu.SelectedItem;
+
+            foreach (CheckBox cbox in flowLayoutPanel1.Controls)
+            {
+                if (cbox.Checked)
+                {
+                    siparis.Malzemeler.Add((Material)cbox.Tag);
+
+                }
+            }
+
+            if (rbtnMiddle.Checked)
+            {
+                siparis.Boy = Boy.orta;
+            }
+            else if (rbtnBig.Checked)
+            {
+                siparis.Boy = Boy.büyük;
+            }
+            else
+            {
+                siparis.Boy = Boy.kucuk;
+            }
+
+            siparis.Adet = (int)nudPiece.Value;
+
+            toplam += siparis.ToplamFiyat;
+            lblTotalCost.Text = toplam.ToString("C2");
+
+            YeniSiparisler.Add(siparis);
+            listBox1.Items.Add(siparis);
+
+            Helper.ClearBoxes(this.Controls);
+
+        }
+
+        private void btnConfirmOrder_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Siparişi onaylıyor musunuz ?", "Onay", MessageBoxButtons.OKCancel);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                Form1.Siparisler.AddRange(YeniSiparisler);
+                listBox1.Items.Clear();
+                YeniSiparisler.Clear();
+                lblTotalCost.Text = "0.00";
+            }
+
+            Helper.ClearBoxes(this.Controls);
+        }
+
         //private void BringMenus()
         //{
         //    foreach (Menu menu in Form4.menus)
@@ -105,87 +161,37 @@ namespace BurgerRestaurant
         //}
 
         //decimal totalCost = 0;
-        //List<Order> orders = new List<Order>(); 
-
-        private void btnAddOrder_Click(object sender, EventArgs e)
-        {
-            Order siparis = new Order();
-
-            siparis.Menu = (Menu)cboxMenu.SelectedItem;
-
-            foreach (CheckBox cbox in flowLayoutPanel1.Controls)
-            {
-                if (cbox.Checked)
-                {
-                    siparis.Malzemeler.Add((Material)cbox.Tag);
-
-                }
-            }
-
-            if (rbtnMiddle.Checked)
-            {
-                siparis.Boy = Boy.orta;
-            }
-            else if (rbtnBig.Checked)
-            {
-                siparis.Boy = Boy.büyük;
-            }
-            else
-            {
-                siparis.Boy = Boy.kucuk;
-            }
-
-            siparis.Adet = (int)nudPiece.Value;
-
-            toplam += siparis.ToplamFiyat;
-            lblTotalCost.Text = toplam.ToString("C2");
-
-            YeniSiparisler.Add(siparis);
-            listBox1.Items.Add(siparis);
-
-            Helper.ClearBoxes(this.Controls);
+        //List<Order> orders = new List<Order>();
 
 
-            //decimal menuCost = BringMenuCost();
-            //decimal newMenuCost = DefineCoefficentAccordingToSize(menuCost);
-            //decimal totalCostOfMaterials = (int)nudPiece.Value * DefineCostAccordingToMaterials(GetSelectedMaterialCheckboxes());
 
-            //// Yeni siparişi oluştur
-            //Order newOrder = new Order
-            //{
-            //    MenuCost = newMenuCost,
-            //    MaterialCost = totalCostOfMaterials,
-            //    Quantity = (int)nudPiece.Value
-            //};
+        //decimal menuCost = BringMenuCost();
+        //decimal newMenuCost = DefineCoefficentAccordingToSize(menuCost);
+        //decimal totalCostOfMaterials = (int)nudPiece.Value * DefineCostAccordingToMaterials(GetSelectedMaterialCheckboxes());
 
-            //orders.Add(newOrder); // Siparişi listeye ekle
+        //// Yeni siparişi oluştur
+        //Order newOrder = new Order
+        //{
+        //    MenuCost = newMenuCost,
+        //    MaterialCost = totalCostOfMaterials,
+        //    Quantity = (int)nudPiece.Value
+        //};
 
-            //// Toplam fiyatı hesapla
-            //totalCost = orders.Sum(order => (order.MenuCost + order.MaterialCost) * order.Quantity);
+        //orders.Add(newOrder); // Siparişi listeye ekle
 
-            //lblTotalCost.Text = totalCost.ToString();
+        //// Toplam fiyatı hesapla
+        //totalCost = orders.Sum(order => (order.MenuCost + order.MaterialCost) * order.Quantity);
 
-            //decimal menuCost = BringMenuCost();
-            //decimal newMenuCost = DefineCoefficentAccordingToSize(menuCost);
-            //decimal totalCostOfMaterials = (int)nudPiece.Value * DefineCostAccordingToMaterials(GetSelectedMaterialCheckboxes());
-            //totalCost = newMenuCost * (int)nudPiece.Value;
-            //totalCost += totalCostOfMaterials;
-            //lblTotalCost.Text = totalCost.ToString();
-        }
+        //lblTotalCost.Text = totalCost.ToString();
 
-        private void btnConfirmOrder_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Siparişi onaylıyor musunuz ?", "Onay", MessageBoxButtons.OKCancel);
+        //decimal menuCost = BringMenuCost();
+        //decimal newMenuCost = DefineCoefficentAccordingToSize(menuCost);
+        //decimal totalCostOfMaterials = (int)nudPiece.Value * DefineCostAccordingToMaterials(GetSelectedMaterialCheckboxes());
+        //totalCost = newMenuCost * (int)nudPiece.Value;
+        //totalCost += totalCostOfMaterials;
+        //lblTotalCost.Text = totalCost.ToString();
 
-            if (dialogResult == DialogResult.OK)
-            {
-                Form1.Siparisler.AddRange(YeniSiparisler);
-                listBox1.Items.Clear();
-                YeniSiparisler.Clear();
-            }
 
-            Helper.ClearBoxes(this.Controls);
-        }
 
         //private decimal BringMenuCost()
         //{

@@ -60,13 +60,13 @@
             lstOrders.ItemHeight = 20;
             lstOrders.Location = new Point(38, 67);
             lstOrders.Name = "lstOrders";
-            lstOrders.Size = new Size(275, 344);
+            lstOrders.Size = new Size(393, 344);
             lstOrders.TabIndex = 1;
             // 
             // gboxGiro
             // 
             gboxGiro.Controls.Add(lblGiro);
-            gboxGiro.Location = new Point(372, 67);
+            gboxGiro.Location = new Point(470, 67);
             gboxGiro.Name = "gboxGiro";
             gboxGiro.Size = new Size(245, 75);
             gboxGiro.TabIndex = 2;
@@ -78,7 +78,7 @@
             lblGiro.AutoSize = true;
             lblGiro.BackColor = SystemColors.Control;
             lblGiro.ForeColor = Color.Red;
-            lblGiro.Location = new Point(54, 33);
+            lblGiro.Location = new Point(54, 32);
             lblGiro.Name = "lblGiro";
             lblGiro.Size = new Size(50, 20);
             lblGiro.TabIndex = 0;
@@ -87,7 +87,7 @@
             // gboxTotalOrders
             // 
             gboxTotalOrders.Controls.Add(lblTotalOrders);
-            gboxTotalOrders.Location = new Point(372, 157);
+            gboxTotalOrders.Location = new Point(470, 157);
             gboxTotalOrders.Name = "gboxTotalOrders";
             gboxTotalOrders.Size = new Size(245, 75);
             gboxTotalOrders.TabIndex = 3;
@@ -107,7 +107,7 @@
             // gboxExtraMaterialRevenue
             // 
             gboxExtraMaterialRevenue.Controls.Add(lblExtraMaterial);
-            gboxExtraMaterialRevenue.Location = new Point(372, 251);
+            gboxExtraMaterialRevenue.Location = new Point(470, 251);
             gboxExtraMaterialRevenue.Name = "gboxExtraMaterialRevenue";
             gboxExtraMaterialRevenue.Size = new Size(245, 75);
             gboxExtraMaterialRevenue.TabIndex = 3;
@@ -127,7 +127,7 @@
             // gboxTotalProductSold
             // 
             gboxTotalProductSold.Controls.Add(lblTotalProduct);
-            gboxTotalProductSold.Location = new Point(372, 336);
+            gboxTotalProductSold.Location = new Point(470, 336);
             gboxTotalProductSold.Name = "gboxTotalProductSold";
             gboxTotalProductSold.Size = new Size(245, 75);
             gboxTotalProductSold.TabIndex = 3;

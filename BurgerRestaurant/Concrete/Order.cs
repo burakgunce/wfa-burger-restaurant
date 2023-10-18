@@ -9,14 +9,9 @@ namespace BurgerRestaurant.Concrete
 {
     public class Order
     {
-        public Order()
-        {
-            Malzemeler = new List<Material>();
-        }
 
+        public List<Material> Malzemeler = new List<Material>();
         public Menu Menu { get; set; }
-
-        public List<Material> Malzemeler { get; set; }
         public Boy Boy { get; set; }
         public int Adet { get; set; }
 
@@ -50,7 +45,7 @@ namespace BurgerRestaurant.Concrete
             double toplam = 0;
             foreach (Material material in this.Malzemeler)
             {
-                toplamFiyat += (double)material.Cost;
+                toplam += (this.Adet * (double)material.Cost);
 
             }
 

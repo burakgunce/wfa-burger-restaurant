@@ -31,9 +31,9 @@ namespace BurgerRestaurant
 
                 ekstraMalzemeGeliri += siparis.EkstraMaterialFiyatlari();
 
-                satilanUrunAdedi += siparis.Malzemeler.Count;
+                satilanUrunAdedi += siparis.Malzemeler.Count * siparis.Adet;
 
-                satilanUrunAdedi++;
+                satilanUrunAdedi += siparis.Adet;
             }
 
             toplamSiparis = Form1.Siparisler.Count;
